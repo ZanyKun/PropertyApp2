@@ -1,0 +1,118 @@
+.content{
+width:100%;
+
+}
+
+.main{
+width:50%;
+margin:60px;
+}
+
+#progressbar{
+margin:10px;
+padding:10px;
+font-size:18px;
+min-width: 800px;
+}
+
+.progress{
+    height:15px;
+    width:100px;
+    background-color: #6CADFF;
+    border:none;
+    display: inline-block;
+    opacity: 0.1;   
+}
+
+.progress.active{
+    opacity: 0.6;
+    background-color: #6CADFF;
+}
+
+
+fieldset{
+display:none;
+width: 800px;
+padding:20px;
+margin-top:50px;
+margin-left: 85px;
+border-radius:5px;
+
+}
+
+#first{
+display:block;
+width: 650px;
+padding:30px;
+margin-top:50px;
+border-radius:5px;
+margin-left: 85px;
+}
+
+input[type=text],
+input[type=password],
+select{
+width:100%;
+margin:10px 0;
+height:40px;
+padding:5px;
+border-top: 3px;
+border-right: 0px;
+border-left: 0px;
+}
+
+
+textarea{
+width:100%;
+margin:10px 0;
+height:70px;
+padding:5px;
+border: 3px solid rgb(236, 176, 220);
+border-radius: 4px;
+}
+
+input[type=submit],
+input[type=button]{
+width: 150px;
+margin:15px 25px;
+padding: 5px;
+height: 40px;
+background-color: #6CADFF;
+border: none;
+border-radius: 4px;
+color: white;
+}
+
+h2,p{
+text-align:center;
+}
+li{
+margin-right:52px;
+display:inline;
+color:#c1c5cc;
+}
+
+.box{
+        padding: 20px;
+        display: none;
+        margin-top: 20px;
+}
+
+.box2{
+        padding: 20px;
+        display: none;
+        margin-top: 20px;
+}
+
+.box3{
+        padding: 20px;
+        display: none;
+        margin-top: 20px;
+}
+
+.box4{
+        padding: 20px;
+        display: none;
+        margin-top: 20px;
+}
+

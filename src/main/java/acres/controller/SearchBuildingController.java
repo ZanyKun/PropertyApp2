@@ -15,11 +15,13 @@ import org.springframework.web.servlet.ModelAndView;
 import acres.dto.BuildingInfo;
 import acres.dto.ComBuildingType;
 import acres.dto.ReBuildingType;
+import acres.service.ElasticSearchService;
 import acres.service.JpaBuildingService;
 
 @Controller
 public class SearchBuildingController {
-	@Autowired JpaBuildingService buildService;
+	@Autowired 	JpaBuildingService buildService;
+	@Autowired	ElasticSearchService elastic;
 	
 	@GetMapping("list_properties.test")
 	public ModelAndView getAllProperties() {
@@ -73,6 +75,15 @@ public class SearchBuildingController {
 			mv.addObject("buildingInfo", buildDetails);
 			mv.addObject("retBuilding", retBuilding);
 		}
+		
+		return mv;
+	}
+	
+	@GetMapping("advance_search.test")
+	public ModelAndView advanceSearch(HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView("properties");
+		List<BuildingInfo> buildings = elastic.advanceSearchBuildingInfo(request.getParameter("userInput"));
+		mv.addObject("buildings", buildings);
 		
 		return mv;
 	}

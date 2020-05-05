@@ -3,7 +3,6 @@ package acres.dto;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -12,6 +11,8 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.context.annotation.Scope;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.elasticsearch.annotations.Document;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,10 +25,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @DynamicInsert
 @DynamicUpdate
+@Document(indexName = "users")
 @Scope("session")
 public class UserInfo {
 	
-
+	@javax.persistence.Id
 	@Id
 	@NotEmpty(message = "Username is required")
 	@Size(min = 6, message = "Username has to be at least 6 characters")

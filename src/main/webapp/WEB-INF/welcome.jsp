@@ -237,7 +237,7 @@
             <div class="row">
               <div class="col-md-4">
               	<div class="aa-single-advance-search">
-              		<input type="text" name="userInput" placeholder="Enter Project Name"/>
+              		<input type="text" name="userInput" placeholder="Search by Project Name, Location or Keyword"/>
               	</div>
               </div>
               <div class="col-md-2">
@@ -303,10 +303,11 @@
             <div class="col-md-3">
             	<div class="aa-single-filter-search">
             		<div class="aa-single-advance-search">
-            			<span>City</span>
-            			<div>
-            				<input type="text" name="city">
-            			</div>
+            			<span>Construction Status</span>
+            			<select name="constructionStatus">
+            				<option>Ready to Move</option>
+            				<option>Under Construction</option>
+            			</select>
             		</div>
             	</div>
             </div>

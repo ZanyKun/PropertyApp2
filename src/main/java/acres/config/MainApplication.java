@@ -23,8 +23,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @SpringBootApplication
 @EnableAutoConfiguration
 @EnableJpaRepositories(basePackages = "acres.dao", repositoryImplementationPostfix = "CustomImpl")
-@EnableWebMvc
-@EnableElasticsearchRepositories(basePackages = "acres.dao")
+@EnableElasticsearchRepositories(basePackages = "acres.elastic")
 @EnableTransactionManagement
 @ComponentScan(basePackages = "acres")
 @EntityScan(basePackages = "acres.dto")

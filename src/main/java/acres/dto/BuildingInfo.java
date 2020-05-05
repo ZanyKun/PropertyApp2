@@ -7,15 +7,14 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Indexed;
 
 import lombok.AllArgsConstructor;
@@ -31,13 +30,11 @@ import lombok.NoArgsConstructor;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Document(indexName = "properties")
 @Indexed
-@Component
 public class BuildingInfo {
 	@Id
-	String buildingId;
-	@javax.persistence.Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	int databaseId;
+	@org.springframework.data.annotation.Id
+	int buildingId;
 	String propertyList;			//Sell, Rent
 	String propertyType;			//Commercial, Residential
 	

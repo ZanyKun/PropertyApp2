@@ -13,7 +13,6 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import acres.filter.RequestFilter;
 
 @Configuration
-@EnableWebMvc
 public class SpringConfig implements WebMvcConfigurer{
 	
 	@Override

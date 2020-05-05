@@ -11,8 +11,8 @@ import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilde
 import org.springframework.data.elasticsearch.core.query.SearchQuery;
 import org.springframework.stereotype.Service;
 
-import acres.dao.DocumentRepository;
 import acres.dto.BuildingInfo;
+import acres.elastic.DocumentRepository;
 
 @Service
 public class ElasticSearchServiceImpl implements ElasticSearchService{

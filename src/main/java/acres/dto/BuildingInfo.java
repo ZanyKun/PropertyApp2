@@ -34,7 +34,7 @@ public class BuildingInfo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@org.springframework.data.annotation.Id
-	int buildingId;
+	String buildingId;
 	String propertyList;			//Sell, Rent
 	String propertyType;			//Commercial, Residential
 	
@@ -60,6 +60,9 @@ public class BuildingInfo {
 	float expectedPrice;			//For sell
 	
 	LocalDate postedDate;
+	
+	@ElementCollection
+	List<String> imageUrls;
 	
 	@ElementCollection
 	List<String> amenities;

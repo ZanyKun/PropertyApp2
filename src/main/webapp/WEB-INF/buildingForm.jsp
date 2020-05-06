@@ -377,9 +377,9 @@
                 <br/>
                 <label for="availability">Availability:<span style="color:red">*</span></label>
                 <select name="availability" required>
+                	<option value="New Construction">New Construction</option>
                     <option value="Under Construction">Under Construction</option>
                     <option value="Ready to Move">Ready to Move</option>
-                    <option value="By Appointment">By Appointment</option>
                 </select><br/>
                 <label for="possessionBy">Possession By:<span style="color:red">*</span></label>
                 <select name="possessionBy" required>

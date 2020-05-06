@@ -35,7 +35,7 @@ public class LoginController {
 			int confirmStatus = 1;
 			if(!userAuth.isUserPresent(currentUser.getUsername())){
 				mv.setViewName("login");
-				mv.addObject("userError", "<p style='color: red'>The username does not exist.</p><br/>");
+				mv.addObject("userError", "<p style='color: red'>The username does not exist.</p>");
 				confirmStatus = -1;
 				throw new UsernameNotFoundException("Username does not appear in database");
 			}

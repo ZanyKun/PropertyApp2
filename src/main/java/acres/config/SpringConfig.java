@@ -25,7 +25,7 @@ public class SpringConfig implements WebMvcConfigurer{
 	
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(new RequestFilter()).addPathPatterns("*.test");
+		registry.addInterceptor(new RequestFilter()).addPathPatterns("/");
 	}
 	
 	@Override

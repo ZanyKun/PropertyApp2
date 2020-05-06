@@ -237,7 +237,7 @@
             <div class="row">
               <div class="col-md-4">
               	<div class="aa-single-advance-search">
-              		<input type="text" name="userInput" placeholder="Search by Project Name, Location or Keyword"/>
+              		<input type="text" name="userInput" style="font-size:14px" placeholder="Search by Project Name, Location or Keyword"/>
               	</div>
               </div>
               <div class="col-md-2">
@@ -303,10 +303,12 @@
             <div class="col-md-3">
             	<div class="aa-single-filter-search">
             		<div class="aa-single-advance-search">
-            			<span>Construction Status</span>
+            			<span>Status</span>
             			<select name="constructionStatus">
-            				<option>Ready to Move</option>
-            				<option>Under Construction</option>
+            				<option value="0">Status</option>
+            				<option value="Ready To Move">Ready to Move</option>
+            				<option value="Under Construction">Under Construction</option>
+            				<option value="New Construction">New Construction</option>
             			</select>
             		</div>
             	</div>
@@ -316,6 +318,7 @@
               		<span>State</span>
               		<div class="aa-single-advance-search">
               		<select name="state">
+              			<option value="0">State</option>
 						<option value="AL">Alabama</option>
 						<option value="AK">Alaska</option>
 						<option value="AZ">Arizona</option>

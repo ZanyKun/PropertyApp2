@@ -17,6 +17,11 @@ import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.stereotype.Indexed;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -59,6 +64,24 @@ public class BuildingInfo {
 	float expectedRent;				//For rent/lease
 	float expectedPrice;			//For sell
 	
+	//Residential Information
+	String reBuildingType;			//Apartment/Flat/BuilderFloor, Residential Land, House/Villa, Others
+	String apartmentType;			//Studio, Residential, Serviced Apartments, Independent
+	String houseType;				//Independent, Farm House
+	
+	//Commercial Information
+	String comBuildingType;			//Offices, Retail, Land, Industry Storage, Hospitality, Others
+	String officeType;				//Commercial, Office in IT Park, Office in Business Park, Business Center, Time Share
+	String retailType;				//Commercial Shop, Commercial Showroom, Space in retail mall
+	String landType;				//Commercial Land, Agricultural Land, Industrial Lands
+	String storageType;				//Ware House, Cold Storage
+	String hospitalityType;			//Hotel/Resorts, Guest-house/Banquet halls
+	
+	
+	boolean multipleProperty;		//Option for all commercial options
+	
+	@JsonDeserialize(using = LocalDateDeserializer.class)
+	@JsonSerialize(using = LocalDateSerializer.class)
 	LocalDate postedDate;
 	
 	@ElementCollection

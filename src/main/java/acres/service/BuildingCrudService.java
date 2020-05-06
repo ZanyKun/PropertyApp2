@@ -1,9 +1,10 @@
 package acres.service;
 
-import acres.dto.ComBuildingType;
-import acres.dto.ReBuildingType;
+import java.util.Optional;
+
+import acres.dto.BuildingInfo;
 
 public interface BuildingCrudService {
-	void insertResidentialBuilding(ReBuildingType r);
-	void insertCommercialBuilding(ComBuildingType c);
+	void insertBuilding(BuildingInfo b);
+	Optional<BuildingInfo> getBuilding(String id);
 }

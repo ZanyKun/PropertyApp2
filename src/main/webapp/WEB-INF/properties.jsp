@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" isELIgnored="false" import="acres.dto.UserInfo, acres.dto.BuildingInfo,acres.dto.ReBuildingType,acres.dto.ComBuildingType"%>
+    pageEncoding="ISO-8859-1" isELIgnored="false" import="acres.dto.UserInfo, acres.dto.BuildingInfo"%>
     
     <%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core"%>
     <%@taglib prefix="spring" uri="http://www.springframework.org/tags/form" %>
@@ -107,13 +107,13 @@
           </button>
           <!-- LOGO -->                                               
           <!-- Text based logo -->
-          <a class="navbar-brand aa-logo" href="welcome.jsp"> Home <span>Property</span></a>
+          <a class="navbar-brand aa-logo" href="welcome"> Home <span>Property</span></a>
           <!-- Image based logo -->
           <!-- <a class="navbar-brand aa-logo-img" href="index.html"><img src="img/logo.png" alt="logo"></a> -->                     
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul id="top-menu" class="nav navbar-nav navbar-right aa-main-nav">
-            <li><a href="welcome.jsp">HOME</a></li>
+            <li><a href="welcome">HOME</a></li>
              <li class="dropdown active">
               <a class="dropdown-toggle" data-toggle="dropdown" href="properties.html">PROPERTIES <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
@@ -463,7 +463,7 @@
             </div>
             <div class="col-md-6 col-sm-12 col-xs-12">
               <div class="aa-footer-right">
-                <a href="welcome.jsp">Home</a>
+                <a href="welcome">Home</a>
                 <a href="#">Support</a>
                 <a href="#">License</a>
                 <a href="#">FAQ</a>

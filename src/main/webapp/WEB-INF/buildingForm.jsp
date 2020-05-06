@@ -111,13 +111,13 @@
           </button>
           <!-- LOGO -->                                               
           <!-- Text based logo -->
-          <a class="navbar-brand aa-logo" href="welcome.jsp"> Home<span>Property</span></a>
+          <a class="navbar-brand aa-logo" href="welcome"> Home<span>Property</span></a>
           <!-- Image based logo -->
           <!-- <a class="navbar-brand aa-logo-img" href="index.html"><img src="img/logo.png" alt="logo"></a> -->                   
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul id="top-menu" class="nav navbar-nav navbar-right aa-main-nav">
-            <li><a href="welcome.jsp">HOME</a></li>
+            <li><a href="welcome">HOME</a></li>
              <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="properties.test">PROPERTIES<span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
@@ -190,6 +190,7 @@
                     <div class="Apartment box2" style="display:none">
                     	<label>Apartment Type:</label><br/>
 	                    <select name="apartmentType" required>
+	                    	<option selected disabled hidden=true>Apartment Type</option>
 	                        <option value="Studio Apartment">Studio Apartment</option>
 	                        <option value="Residential Apartment">Residential Apartment</option>
 	                        <option value="Serviced Apartment">Serviced Apartment</option>
@@ -199,7 +200,8 @@
                      <div class="House box2" style="display:none">
                      	<label>House Type:</label>
 	                    <select name="houseType">
-	                        <option value="Independent House/Villa">Independent House/Villa</option>
+	                    	<option selected disabled hidden=true>House Type</option>
+	                        <option value="Independent House / Villa">Independent House / Villa</option>
 	                        <option value="Farm House">Farm House</option>
 	                    </select><br/>
                     </div>
@@ -222,6 +224,7 @@
                     <div class="Office box3" style="display:none">
                     	<label>Office Type:</label>
 	                    <select name="officeType">
+	                    	<option selected disabled hidden=true>Office Types</option>
 	                        <option value="Commercial Office">Commercial Office</option>
 	                        <option value="Office in IT Park">Office in IT Park</option>
 	                        <option value="Office in Business Park">Office in Business Park</option>
@@ -232,6 +235,7 @@
                     <div class="Retail box3" style="display:none">
                     	<label>Retail Type:</label>
                     	<select name="retailType">
+                    		<option selected disabled hidden=true>Retail Types</option>
 	                        <option value="Commercial Shop">Commercial Shop</option>
 	                        <option value="Commercial Showroom">Commercial Showroom</option>
 	                        <option value="Space in Retail Mall">Space in Retail Mall</option>
@@ -240,6 +244,7 @@
                     <div class="Land box3"style="display:none">
                     	<label>Land Type:</label>
                     	<select name="landType">
+                    	<option selected disabled hidden=true>Land Types</option>
                         <option value="Commercial Land">Commercial Land</option>
                         <option value="Agricultural Land">Agricultural Land</option>
                         <option value="Industrial Land">Industrial Land</option>
@@ -248,6 +253,7 @@
                     <div class="Storage box3" style="display:none">
                     	<label>Storage Type:</label>
                     	 <select name="industryType">
+                    	 <option selected disabled hidden=true>Storage Types</option>
                         <option value="Warehouse">Warehouse</option>
                         <option value="Cold Storage">Cold Storage</option>
                     </select>
@@ -255,8 +261,9 @@
                     <div class="Hospitality box3" style="display:none">
 	                    <label>Hospitality Type:</label>
 	                    <select name="hospitalityType">
-	                        <option value="Hotel/Resorts">Hotel/Resorts</option>
-	                        <option value="Guesthouse/Banquet Halls">Guesthouse/Banquet Halls</option>
+	                    	<option selected disabled hidden=true>Hospitality Type</option>
+	                        <option value="Hotel / Resorts">Hotel / Resorts</option>
+	                        <option value="Guesthouse / Banquet Halls">Guesthouse / Banquet Halls</option>
 	                    </select>
                     </div>
                     <br/><br/>
@@ -476,7 +483,7 @@
             </div>
             <div class="col-md-6 col-sm-12 col-xs-12">
               <div class="aa-footer-right">
-                <a href="welcome.jsp">Home</a>
+                <a href="welcome">Home</a>
                 <a href="#">Support</a>
                 <a href="#">License</a>
                 <a href="#">FAQ</a>

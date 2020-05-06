@@ -103,13 +103,13 @@
           </button>
           <!-- LOGO -->                                               
           <!-- Text based logo -->
-           <a class="navbar-brand aa-logo" href="welcome.jsp"> Home <span>Property</span></a>
+           <a class="navbar-brand aa-logo" href="welcome"> Home <span>Property</span></a>
            <!-- Image based logo -->
            <!-- <a class="navbar-brand aa-logo-img" href="index.html"><img src="img/logo.png" alt="logo"></a> -->
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul id="top-menu" class="nav navbar-nav navbar-right aa-main-nav">
-            <li class="active"><a href="welcome.jsp">HOME</a></li>
+            <li class="active"><a href="welcome">HOME</a></li>
              <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown">PROPERTIES <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">                
@@ -237,13 +237,13 @@
             <div class="row">
               <div class="col-md-4">
               	<div class="aa-single-advance-search">
-              		<input type="text" name="userInput" style="font-size:14px" placeholder="Search by Project Name, Location or Keyword"/>
+              		<input type="text" name="keyword" style="font-size:14px" placeholder="Search by Project Name, Location or Keyword"/>
               	</div>
               </div>
               <div class="col-md-2">
                 <div class="aa-single-advance-search">
                   <select name="propertyType">
-                   <option value="0" selected>Category</option>
+                   <option selected disabled hidden=true>Category</option>
                     <option value="Residential">Residential</option>
                     <option value="Commercial">Commercial</option>
                   </select>
@@ -252,7 +252,7 @@
               <div class="col-md-2">
                  <div class="aa-single-advance-search">
                   <select name="buildingType">
-                    <option value="0" selected>Building Type</option>
+                    <option selected disabled hidden=true>Building Type</option>
                     <optgroup label="Residential Listings">
                     	<option value="Studio Apartment">Studio Apartment</option>
                     	<option value="Residential Apartment">Residential Apartment</option>
@@ -285,7 +285,7 @@
               <div class="col-md-2">
                  <div class="aa-single-advance-search">
                   <select name="listingType">
-                    <option value="0" selected>Listing</option>
+                    <option selected disabled hidden=true>Listing</option>
                     <option value="Sale">Sale</option>
                     <option value="Rent">Rent</option>
                   </select>
@@ -304,12 +304,14 @@
             	<div class="aa-single-filter-search">
             		<div class="aa-single-advance-search">
             			<span>Status</span>
+            			<div class="aa-single-advance-search">
             			<select name="constructionStatus">
-            				<option value="0">Status</option>
+            				<option selected disabled hidden=true>Status</option>
             				<option value="Ready To Move">Ready to Move</option>
             				<option value="Under Construction">Under Construction</option>
             				<option value="New Construction">New Construction</option>
             			</select>
+            			</div>
             		</div>
             	</div>
             </div>
@@ -318,7 +320,7 @@
               		<span>State</span>
               		<div class="aa-single-advance-search">
               		<select name="state">
-              			<option value="0">State</option>
+              			<option selected disabled hidden=true>State</option>
 						<option value="AL">Alabama</option>
 						<option value="AK">Alaska</option>
 						<option value="AZ">Arizona</option>

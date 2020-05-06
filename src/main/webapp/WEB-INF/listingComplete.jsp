@@ -53,7 +53,7 @@
               <div class="aa-signin-form-title">
                 <h1>The listing was saved successfully.</h1>
                 <h3><a>You can see your listing here.</a></h3>
-                <h2><a href="welcome.jsp">Continue to homepage through here.</a></h2>
+                <h2><a href="welcome">Continue to homepage through here.</a></h2>
               </div>
             </div>
           </div>

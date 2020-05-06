@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" isELIgnored="false" import="acres.dto.UserInfo, acres.dto.ReBuildingType, acres.dto.ComBuildingType, acres.dto.BuildingInfo"%>
+    pageEncoding="ISO-8859-1" isELIgnored="false" import="acres.dto.UserInfo, acres.dto.BuildingInfo"%>
     <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="core"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -105,7 +105,7 @@
           </button>
           <!-- LOGO -->                                               
           <!-- Text based logo -->
-          <a class="navbar-brand aa-logo" href="welcome.jsp"> Home <span>Property</span></a>
+          <a class="navbar-brand aa-logo" href="welcome"> Home <span>Property</span></a>
           <!-- Image based logo -->
           <!-- <a class="navbar-brand aa-logo-img" href="index.html"><img src="img/logo.png" alt="logo"></a> -->                     
         </div>
@@ -138,7 +138,7 @@
           <div class="aa-property-header-inner">
             <h2>Properties Details</h2>
             <ol class="breadcrumb">
-            <li><a href="welcome.jsp">HOME</a></li>            
+            <li><a href="welcome">HOME</a></li>            
             <li class="active">PROPERTY DETAILS</li>
           </ol>
           </div>

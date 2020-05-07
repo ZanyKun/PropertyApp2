@@ -166,6 +166,7 @@
             </div>
             <!-- Start properties content body -->
             <div class="aa-properties-content-body">
+              ${noBuildings}
               <ul class="aa-properties-nav">
               <core:forEach var="buildings" items="${buildings}">
               	<li>
@@ -214,6 +215,48 @@
                         <p>${buildings.description}</p>                      
                       </div>
                       <div class="aa-properties-detial">
+                      	<span class="aa-price">
+							<core:choose>
+								<core:when test="${buildings.propertyType.equals('Commercial')}">
+								<core:choose>
+									<core:when test="${buildings.comBuildingType.equals('Office')}">
+										<core:out value="${buildings.officeType}"></core:out>
+									</core:when>
+									<core:when test="${buildings.comBuildingType.equals('Retail')}">
+										<core:out value="${buildings.retailType}"></core:out>
+									</core:when>
+									<core:when test="${buildings.comBuildingType.equals('Land')}">
+										<core:out value="${buildings.landType}"></core:out>
+									</core:when>
+									<core:when test="${buildings.comBuildingType.equals('Storage')}">
+										<core:out value="${buildings.storageType}"></core:out>
+									</core:when>
+									<core:when test="${buildings.comBuildingType.equals('Hospitality')}">
+										<core:out value="${buildings.hospitalityType}"></core:out>
+									</core:when>
+									<core:otherwise>
+										<core:out value="${buildings.comBuildingType}"></core:out>
+									</core:otherwise>
+								</core:choose>
+								</core:when>
+								<core:when test="${buildings.propertyType.equals('Residential')}">
+									<core:choose>
+									<core:when test="${buildings.reBuildingType.equals('Apartment')}">
+										<core:out value="${buildings.apartmentType}"></core:out>
+									</core:when>
+									<core:when test="${buildings.reBuildingType.equals('Independent House / Villa')}">
+										<core:out value="${buildings.houseType}"></core:out>
+									</core:when>
+									<core:otherwise>
+										<core:out value="${buildings.reBuildingType}"></core:out>
+									</core:otherwise>
+									</core:choose>
+								</core:when>
+							</core:choose>
+							<core:out value=" | ${buildings.propertyType}"></core:out>
+                       </span>
+                      </div>
+                      <div class="aa-properties-detial">
                         <span class="aa-price">
                           <core:choose>
                           	<core:when test="${buildings.expectedRent != 0}">
@@ -224,9 +267,8 @@
                           	</core:when>
                           </core:choose>
                        </span>
-                          <spring:form action="property_details.test" method="get">
+                          <spring:form action="/properties/{buildingId}" method="get">
                           	<input type="hidden" name="buildingId" value="${buildings.buildingId}"/>
-                          	<input type="hidden" name="propertyType" value="${buildings.propertyType}"/>
                           	<input type="submit" class="aa-secondary-btn" value="View Details"/>
                           </spring:form>
                       </div>

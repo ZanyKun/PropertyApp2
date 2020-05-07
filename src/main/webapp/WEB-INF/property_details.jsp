@@ -3,8 +3,8 @@
     <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="core"%>
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
+	<head>
+  <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">    
     <title>Home Property | Properties Details</title>
@@ -28,7 +28,6 @@
 
     <!-- Main style sheet -->
     <link href="css/style.css" rel="stylesheet">    
-
    
     <!-- Google Font -->
     <link href='https://fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css'>    
@@ -167,37 +166,37 @@
                <h2>
                <core:if test="${buildingInfo.propertyType.equals('Residential')}">
                <core:choose>
-          				<core:when test="${retBuilding.reBuildingType.equals('Apartment')}">
+          				<core:when test="${buildingInfo.reBuildingType.equals('Apartment')}">
           					<core:out value="Apartment | "></core:out>
-          					<core:out value="${retBuilding.apartmentType}"></core:out>
+          					<core:out value="${buildingInfo.apartmentType}"></core:out>
           				</core:when>
-          				<core:when test="${retBuilding.reBuildingType.equals('House')}">
+          				<core:when test="${buildingInfo.reBuildingType.equals('House')}">
           					<core:out value="House/Villa | "></core:out>
-          					<core:out value="${retBuilding.houseType}"></core:out>
+          					<core:out value="${buildingInfo.houseType}"></core:out>
           				</core:when>
                </core:choose>
 			   </core:if>
                <core:if test="${buildingInfo.propertyType.equals('Commercial')}">
                <core:choose>
-               				<core:when test="${retBuilding.comBuildingType.equals('Office')}">
+               				<core:when test="${buildingInfo.comBuildingType.equals('Office')}">
                					<core:out value="Office | "></core:out>
-               					<core:out value="${retBuilding.officeType}"></core:out>
+               					<core:out value="${buildingInfo.officeType}"></core:out>
                				</core:when>
-               				<core:when test="${retBuilding.comBuildingType.equals('Retail')}">
+               				<core:when test="${buildingInfo.comBuildingType.equals('Retail')}">
                					<core:out value="Retail | "></core:out>
-               					<core:out value="${retBuilding.retailType}"></core:out>
+               					<core:out value="${buildingInfo.retailType}"></core:out>
                				</core:when>
-               				<core:when test="${retBuilding.comBuildingType.equals('Land')}">
+               				<core:when test="${buildingInfo.comBuildingType.equals('Land')}">
                					<core:out value="Land | "></core:out>
-               					<core:out value="${retBuilding.landType}"></core:out>
+               					<core:out value="${buildingInfo.landType}"></core:out>
                				</core:when>
-               				<core:when test="${retBuilding.comBuildingType.equals('Storage')}">
+               				<core:when test="${buildingInfo.comBuildingType.equals('Storage')}">
                					<core:out value="Industry Storage | "></core:out>
-               					<core:out value="${retBuilding.storageType}"></core:out>
+               					<core:out value="${buildingInfo.storageType}"></core:out>
                				</core:when>
-               				<core:when test="${retBuilding.comBuildingType.equals('Hospitality')}">
+               				<core:when test="${buildingInfo.comBuildingType.equals('Hospitality')}">
                					<core:out value="Hospitality | "></core:out>
-               					<core:out value="${retBuilding.hospitalityType}"></core:out>
+               					<core:out value="${buildingInfo.hospitalityType}"></core:out>
                				</core:when>
                				<core:otherwise>
                					<core:out value="Other Building Type"></core:out>

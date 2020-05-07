@@ -1,6 +1,6 @@
 package acres.dto;
 
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.ElementCollection;
@@ -15,12 +15,14 @@ import javax.persistence.ManyToOne;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldType;
 import org.springframework.stereotype.Indexed;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
-import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+import com.fasterxml.jackson.databind.deser.std.DateDeserializers.DateDeserializer;
+import com.fasterxml.jackson.databind.ser.std.DateSerializer;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -80,9 +82,10 @@ public class BuildingInfo {
 	
 	boolean multipleProperty;		//Option for all commercial options
 	
-	@JsonDeserialize(using = LocalDateDeserializer.class)
-	@JsonSerialize(using = LocalDateSerializer.class)
-	LocalDate postedDate;
+	@Field(type = FieldType.Date)
+	@JsonDeserialize(using = DateDeserializer.class)  
+	@JsonSerialize(using = DateSerializer.class) 
+	Date postedDate;
 	
 	@ElementCollection
 	List<String> imageUrls;

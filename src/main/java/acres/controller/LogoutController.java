@@ -14,6 +14,6 @@ public class LogoutController {
 	@GetMapping("logout.test")
 	public void logoutUser(HttpSession session, HttpServletResponse response) throws IOException {
 		session.invalidate();
-		response.sendRedirect("../99Acres/welcome.jsp");
+		response.sendRedirect("../welcome.jsp");
 	}
 }

@@ -41,6 +41,59 @@ public class BuildingSearchServiceImpl {
 		searchSourceBuilder.from(0);
 		searchSourceBuilder.size(8);
 		
+		BoolQueryBuilder myQuery = settingQuery(keyword, request);
+		
+		searchSourceBuilder.query(myQuery);
+		settingHighlighter(searchSourceBuilder);
+
+		
+		SearchRequest searchRequest = new SearchRequest("properties");
+		searchRequest.source(searchSourceBuilder);
+		
+		
+		//Getting information from elastic search
+		SearchResponse searchResponse = client.search(searchRequest, RequestOptions.DEFAULT);
+		SearchHits hits = searchResponse.getHits();
+		
+		SearchHit[] propertiesHit = hits.getHits();
+		
+		List<BuildingInfo> buildingList = new ArrayList<>();
+		
+		for(SearchHit hit: propertiesHit) {
+			Optional<BuildingInfo> buildResult = buildRepo.findById(hit.getId());
+			BuildingInfo building = buildResult.get();
+			
+			Map<String, HighlightField> highlightedFields = hit.getHighlightFields();
+			HighlightField projHighlight = highlightedFields.get("projectName");
+			HighlightField descHighlight = highlightedFields.get("description");
+			if(projHighlight != null) {
+				Text[] fragProj = projHighlight.fragments();
+				String highlightedProject = "";
+				
+				for(int i = 0; i < fragProj.length; i++) {
+					highlightedProject += fragProj[i].string();
+				}
+				
+				building.setProjectName(highlightedProject);
+			}
+			if(descHighlight != null) {
+				Text[] fragDesc = descHighlight.fragments();
+				String highlightedDescription = "";
+				
+				for(int i = 0; i < fragDesc.length; i++) {
+					highlightedDescription += fragDesc[i].string();
+				}
+				
+				building.setDescription(highlightedDescription);
+			}
+			
+			buildingList.add(building);
+		}
+		
+		return buildingList;
+	}
+
+	private BoolQueryBuilder settingQuery(String keyword, HttpServletRequest request) {
 		String propertyType = request.getParameter("propertyType");
 		String listingType = request.getParameter("listingType");
 		String constructionStatus = request.getParameter("constructionStatus");
@@ -75,16 +128,16 @@ public class BuildingSearchServiceImpl {
 		BoolQueryBuilder myQuery = QueryBuilders.boolQuery();
 		
 		if(keyword != "") {
-			QueryBuilder keywordMatch = QueryBuilders.multiMatchQuery(keyword, "projectName", "description");
-			myQuery.must(keywordMatch);
+			QueryBuilder projectFuzzy = QueryBuilders.multiMatchQuery(keyword, "projectName", "description").fuzzyTranspositions(true);
+			myQuery.must(projectFuzzy);
+		}
+		if(listingType != null) {
+			QueryBuilder listingMatch = QueryBuilders.termQuery("propertyList", listingType);
+			myQuery.should(listingMatch);
 		}
 		if(propertyType != null) {
 			QueryBuilder propertyMatch = QueryBuilders.termQuery("propertyType", propertyType);
 			myQuery.should(propertyMatch);
-		}
-		if(propertyType != null) {
-			QueryBuilder listingMatch = QueryBuilders.termQuery("propertyList", listingType);
-			myQuery.should(listingMatch);
 		}
 		if(constructionStatus != null) {
 			QueryBuilder availabilityMatch = QueryBuilders.termQuery("availabity", constructionStatus);
@@ -114,50 +167,16 @@ public class BuildingSearchServiceImpl {
 			QueryBuilder budgetRange = QueryBuilders.rangeQuery("expectedRent").gte(minBudget).lte(maxBudget);
 			myQuery.must(budgetRange);
 		}
-		
-		searchSourceBuilder.query(myQuery);
-		settingHighlighter(searchSourceBuilder);
-
-		
-		SearchRequest searchRequest = new SearchRequest("properties");
-		searchRequest.source(searchSourceBuilder);
-		
-		
-		//Getting information from elastic search
-		SearchResponse searchResponse = client.search(searchRequest, RequestOptions.DEFAULT);
-		SearchHits hits = searchResponse.getHits();
-		
-		SearchHit[] propertiesHit = hits.getHits();
-		long totalHits = hits.getTotalHits();
-		System.out.println("Number of hits: " + totalHits);
-		
-		
-		List<BuildingInfo> buildingList = new ArrayList<>();
-		
-		for(SearchHit hit: propertiesHit) {
-			Map<String, HighlightField> highlightedFields = hit.getHighlightFields();
-			HighlightField highlight = highlightedFields.get("projectName");
-			Text[] fragments = highlight.fragments();
-			String fragmentString = fragments[0].string();
-			
-			
-			Optional<BuildingInfo> buildResult = buildRepo.findById(hit.getId());
-			if(buildResult.isPresent()) {
-				BuildingInfo building = buildResult.get();
-				System.out.println(building);
-				buildingList.add(building);
-			}
-		}
-		
-		return buildingList;
+		return myQuery;
 	}
 
 	private void settingHighlighter(SearchSourceBuilder searchSourceBuilder) {
 		HighlightBuilder highlightBuilder = new HighlightBuilder();
 		HighlightBuilder.Field highlightProjectName = new HighlightBuilder.Field("projectName");
-		highlightProjectName.highlighterType("unified");
+		highlightProjectName.highlighterType("unified").preTags("<b style='color: #6CADFF'>").postTags("</b>");
 		highlightBuilder.field(highlightProjectName);
 		HighlightBuilder.Field highlightDescription =new HighlightBuilder.Field("description");
+		highlightDescription.highlighterType("unified").preTags("<b style='color: #6CADFF'>").postTags("</b>");
 		highlightBuilder.field(highlightDescription);
 		searchSourceBuilder.highlighter(highlightBuilder);
 	}

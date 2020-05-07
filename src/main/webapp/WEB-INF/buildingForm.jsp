@@ -174,8 +174,8 @@
             <fieldset id="first" class="tab">
             		<br/>
                     <label>List Property For:<span style="color:red">*</span></label><br/>
-                <input type="radio" name="propertyList" value="Sell"/><label>Sell</label><br/>
-                <input type="radio" name="propertyList" value="Rent" /><label>Rent</label>
+                <input type="radio" name="propertyList" value="Sale"/><label>Sale</label><br/>
+                <input type="radio" name="propertyList" value="Rent"/><label>Rent</label>
                 <br/><br/>
                     <label for="listing_type">Property Type:<span style="color: red">*</span></label><br/>
                 <input type="radio" name="propertyType" value="Residential"/><label for="propertyType">Residential</label>
@@ -185,7 +185,7 @@
                 <div class="Residential box" style="display:none">
                     <input type="radio" name="reBuildingType" value="Apartment"/><label for="Apartment">Apartment/Flat/Building Floor</label><br/>
                     <input type="radio" name="reBuildingType" value="Residental Land"/><label for="Residential Land">Residential Land</label><br/>
-                    <input type="radio" name="reBuildingType" value="House" required><label for="House">House</label><br/><input type="radio" name="reBuildingType" value="Other">
+                    <input type="radio" name="reBuildingType" value="House"><label for="House">House</label><br/><input type="radio" name="reBuildingType" value="Other">
                     <label for="Other">Other</label><br/><br/>
                     <div class="Apartment box2" style="display:none">
                     	<label>Apartment Type:</label><br/>
@@ -427,8 +427,8 @@
                     	<label for="expectedRent">Expected Rent:<span style="color:red">*</span> $</label>
                     	<input type="number" step=0.01 name="expectedRent"><br/><br/>
                     </div>
-                    <div class="Sell box4" style="display:none">
-                    	<label for="ex pectedPrice">Expected Price:<span style="color:red">*</span> $</label>
+                    <div class="Sale box4" style="display:none">
+                    	<label for="expectedPrice">Expected Price:<span style="color:red">*</span> $</label>
                     	<input type="number" step=0.01 name="expectedPrice"><br/>
                     </div>
                     <br/>

@@ -28,6 +28,9 @@ public class SearchBuildingCtrl {
 		if(!retBuildings.isEmpty()) {
 			mv.addObject("buildings", retBuildings);
 		}
+		else {
+			mv.addObject("noBuildings", "<h3>No buildings were found for this search criteria</h3>");
+		}
 		return mv;
 	}
 	

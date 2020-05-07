@@ -1,6 +1,6 @@
 package acres.controller;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -28,37 +28,49 @@ public class RegisterBuildingCtrl {
 		UserInfo user = (UserInfo) request.getAttribute("currentUser");
 		String inputRent = request.getParameter("expectedRent");
 		String inputPrice = request.getParameter("expectedPrice");
-		LocalDate date = LocalDate.now();
-		if(!(inputRent.equals(""))) {
-			float rent = Float.parseFloat(inputRent);
-			building.setExpectedRent(rent);
-		}
-		else {
-			float price = Float.parseFloat(inputPrice);
-			building.setExpectedPrice(price);
-		}
-		
+		String listingType = request.getParameter("propertyList");
 		String propertyType = request.getParameter("propertyType");
+		Date postedDate = new Date();
 		
 		if(session.getAttribute("currentUser") == null) {
 			mv.setViewName("buildingForm");
 			mv.addObject("error", "Please log in to successfully list a property");
 		}
-		else {
-			
-			if(propertyType == null) {
+		else if(propertyType == null) {
+			mv.setViewName("buildingForm");
+			mv.addObject("error", "<p>No information has been provided</p>");
+		}
+		else if(listingType.equals("Sale")) {
+			if(inputPrice.equals("")) {
 				mv.setViewName("buildingForm");
-				mv.addObject("error", "<p>No information has been provided</p>");
+				mv.addObject("error", "<p>Please provide a price for your property</p>");
 			}
-			else{
-					building.setUser(user);
-					building.setPostedDate(date);
-					buildService.insertBuilding(building);
-					session.setAttribute("building", building);
-					mv.setViewName("listingComplete");
+			else {
+				float price = Float.parseFloat(inputPrice);
+				building.setExpectedPrice(price);
+				building.setUser(user);
+				building.setPostedDate(postedDate);
+				buildService.insertBuilding(building);
+				session.setAttribute("building", building);
+				mv.setViewName("listingComplete");
 			}
 		}
-		
+		else if(listingType.equals("Rent")) {
+			if(inputRent == null) {
+				mv.setViewName("buildingForm");
+				mv.addObject("error", "<p>Please provide expected rent for your property</p>");
+			}
+			else {
+				float rent = Float.parseFloat(inputRent);
+				building.setExpectedRent(rent);
+				building.setUser(user);
+				building.setPostedDate(postedDate);
+				buildService.insertBuilding(building);
+				session.setAttribute("building", building);
+				mv.setViewName("listingComplete");
+				
+			}
+		}
 		return mv;
 	}
 	

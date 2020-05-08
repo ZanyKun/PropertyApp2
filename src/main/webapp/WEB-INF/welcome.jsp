@@ -237,7 +237,8 @@
             <div class="row">
               <div class="col-md-4">
               	<div class="aa-single-advance-search">
-              		<input type="text" name="keyword" style="font-size:14px" placeholder="Search by Project Name, Location or Keyword"/>
+              		<input type="text" name="keyword" style="font-size:14px" placeholder="Search by Project Name, Location or Keyword" 
+              		title="Keyword required for searching" required/>
               	</div>
               </div>
               <div class="col-md-2">

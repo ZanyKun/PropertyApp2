@@ -133,19 +133,19 @@ public class BuildingSearchServiceImpl {
 		}
 		if(listingType != null) {
 			QueryBuilder listingMatch = QueryBuilders.termQuery("propertyList", listingType);
-			myQuery.should(listingMatch);
+			myQuery.filter(listingMatch);
 		}
 		if(propertyType != null) {
 			QueryBuilder propertyMatch = QueryBuilders.termQuery("propertyType", propertyType);
-			myQuery.should(propertyMatch);
+			myQuery.filter(propertyMatch);
 		}
 		if(constructionStatus != null) {
 			QueryBuilder availabilityMatch = QueryBuilders.termQuery("availabity", constructionStatus);
-			myQuery.should(availabilityMatch);
+			myQuery.filter(availabilityMatch);
 		}
 		if(state != null) {
 			QueryBuilder stateMatch = QueryBuilders.termQuery("state", state);
-			myQuery.should(stateMatch);
+			myQuery.filter(stateMatch);
 		}
 		
 		QueryBuilder areaRange = QueryBuilders.rangeQuery("plotArea").gte(minArea).lte(maxArea);
@@ -156,16 +156,16 @@ public class BuildingSearchServiceImpl {
 		if(listingType == null) {
 			QueryBuilder budgetRange = QueryBuilders.rangeQuery("expectedPrice").gte(minBudget).lte(maxBudget);
 			QueryBuilder rentRange = QueryBuilders.rangeQuery("expectedRent").gte(minBudget).lte(maxBudget);
-			myQuery.must(budgetRange);
-			myQuery.must(rentRange);
+			myQuery.filter(budgetRange);
+			myQuery.filter(rentRange);
 		}
 		else if (listingType.equals("Sale")) {
 			QueryBuilder budgetRange = QueryBuilders.rangeQuery("expectedPrice").gte(minBudget).lte(maxBudget);
-			myQuery.must(budgetRange);
+			myQuery.filter(budgetRange);
 		}
 		else if(listingType.equals("Rent")) {
 			QueryBuilder budgetRange = QueryBuilders.rangeQuery("expectedRent").gte(minBudget).lte(maxBudget);
-			myQuery.must(budgetRange);
+			myQuery.filter(budgetRange);
 		}
 		return myQuery;
 	}

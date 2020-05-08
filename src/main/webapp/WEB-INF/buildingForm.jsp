@@ -444,6 +444,10 @@
                     <input type="checkbox" name="amenities" value="Included Heating"/><label>Included Heating</label><br/>
                     <input type="checkbox" name="amenities" value="Concierge Service"/><label>Concierge Service</label><br/>
                     <input type="checkbox" name="amenities" value="Nearby Restaurants"/><label>Nearby Restaurants</label><br/>
+                    <br/><br/>
+                    <label for="imgUpload">Upload Property Images:</label><br/>
+                    <input type="file" id="img" name="img" accept="image/*" multiple>
+                    <br/>
                     <br/>
                     <input type="button" class="previous" value="Previous"/>
                     <input class="submit" type="submit" value="Submit Building">

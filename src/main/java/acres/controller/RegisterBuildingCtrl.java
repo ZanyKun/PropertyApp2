@@ -47,7 +47,7 @@ public class RegisterBuildingCtrl {
 		
 		if(session.getAttribute("currentUser") == null) {
 			mv.setViewName("buildingForm");
-			mv.addObject("error", "Please log in to successfully list a property");
+			mv.addObject("error", "Please log in to successfully list a property"); 
 		}
 		else if(propertyType == null) {
 			mv.setViewName("buildingForm");

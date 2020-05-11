@@ -8,7 +8,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">    
     <title>Home Property | Properties Details</title>
-
+	
+	<base href="/">
+	
     <!-- Favicon -->
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
     
@@ -28,7 +30,7 @@
 
     <!-- Main style sheet -->
     <link href="css/style.css" rel="stylesheet">    
-   
+   	
     <!-- Google Font -->
     <link href='https://fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css'>    
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
@@ -80,7 +82,7 @@
 				  }else{
 						out.print("<div class='aa-header-right' id='loggedIn' style='display:block'>" +
 			                	"<a href='user_info' class='aa-register'>" + user.getUsername() + "</a>" +
-			                	"<a href='logout.test' class='aa-login'>Logout</a></div>"); 
+			                	"<a href='/users/logout' class='aa-login'>Logout</a></div>"); 
 				  } %>
               </div>
             </div>

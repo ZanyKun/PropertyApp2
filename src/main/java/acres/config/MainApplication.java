@@ -14,6 +14,7 @@ import org.springframework.data.elasticsearch.client.ClientConfiguration;
 import org.springframework.data.elasticsearch.client.RestClients;
 import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 
 @SpringBootApplication
@@ -22,7 +23,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @ComponentScan(basePackages = "acres")
 @EntityScan(basePackages = "acres.dto")
-public class MainApplication {
+public class MainApplication implements WebMvcConfigurer {
 
 	public static void main(String[] args) {
 		SpringApplication.run(MainApplication.class, args);

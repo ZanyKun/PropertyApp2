@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class LogoutController {
 	
-	@GetMapping("logout.test")
+	@GetMapping("/users/logout")
 	public void logoutUser(HttpSession session, HttpServletResponse response) throws IOException {
 		session.invalidate();
 		response.sendRedirect("../welcome.jsp");

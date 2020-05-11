@@ -3,11 +3,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+  	<base href="/">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">    
     <title>Home Property | Home</title>
-    
+    <base href="/">
     <!-- Favicon -->
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
 
@@ -78,7 +79,7 @@
 				  }else{
 						out.print("<div class='aa-header-right' id='loggedIn' style='display:block'>" +
 			                	"<a href='user_info' class='aa-register'>" + user.getUsername() + "</a>" +
-			                	"<a href='logout.test' class='aa-login'>Logout</a></div>"); 
+			                	"<a href='/users/logout' class='aa-login'>Logout</a></div>"); 
 				  } %>
               </div>
             </div>
@@ -114,8 +115,8 @@
               <a class="dropdown-toggle" data-toggle="dropdown">PROPERTIES <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">                
               	<li><a href="list_properties.test">ALL PROPERTIES</a></li>
-                <li><a href="residential_properties.test">RESIDENTIAL PROPERTIES</a></li>
-                <li><a href="commercial_properties.test">COMMERCIAL PROPERTIES</a></li>                                            
+                <li><a href="search/properties/propertyType=Residential">RESIDENTIAL PROPERTIES</a></li>
+                <li><a href="search/properties/propertyType=Commercial">COMMERCIAL PROPERTIES</a></li>                                            
               </ul>
             </li>
             <li><a href="list_property.test">LIST PROPERTY</a></li>    
@@ -229,7 +230,7 @@
 
   <!-- Advance Search -->
   <section id="aa-advance-search">
-  <form action="advance_search.test" method="get">
+  <form action="search/properties/keyword={keyword}" method="get">
     <div class="container">
       <div class="aa-advance-search-area">
         <div class="form">

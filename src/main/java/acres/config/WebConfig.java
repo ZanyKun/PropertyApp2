@@ -16,7 +16,7 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
 
 	@Override
 	protected String[] getServletMappings() {
-		return new String[] {"*.test"};
+		return new String[] {"*"};
 	}
 
 }

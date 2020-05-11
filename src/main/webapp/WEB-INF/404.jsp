@@ -147,14 +147,12 @@
   <!-- End Proerty header  -->
   <section id="aa-error">
     <div class="container">
-      <row>
         <div class="col-md-12">
           <div class="aa-error-area">
             <h2>404</h2>
             <p>Oops! The page you requested was not found!</p>
           </div>
         </div>
-      </row>
     </div>
   </section>
 
@@ -185,7 +183,7 @@
                 <a href="#">Support</a>
                 <a href="#">License</a>
                 <a href="#">FAQ</a>
-                <a href="#">Privacy & Term</a>
+                <a href="#">Privacy and Term</a>
               </div>
             </div>            
           </div>

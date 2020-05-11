@@ -3,7 +3,6 @@ package acres.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
@@ -61,7 +60,7 @@ public class SpringConfig implements WebMvcConfigurer{
 	
 	@Bean
 	public AmazonS3 s3Client() {
-		AmazonS3 s3client = AmazonS3ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(credentials())).withRegion(Regions.US_EAST_2).build();
+		AmazonS3 s3client = AmazonS3ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(credentials())).disableChunkedEncoding().withRegion(Regions.US_EAST_2).build();
 		return s3client;
 	}
 }

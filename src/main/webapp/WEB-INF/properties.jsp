@@ -7,6 +7,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+  	<base href="/">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">    
@@ -83,7 +84,7 @@
 				  }else{
 						out.print("<div class='aa-header-right' id='loggedIn' style='display:block'>" +
 			                	"<a href='user_info' class='aa-register'>" + user.getUsername() + "</a>" +
-			                	"<a href='logout.test' class='aa-login'>Logout</a></div>"); 
+			                	"<a href='/users/logout' class='aa-login'>Logout</a></div>"); 
 				  } %>
               </div>
             </div>

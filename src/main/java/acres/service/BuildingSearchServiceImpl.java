@@ -23,7 +23,6 @@ import org.elasticsearch.search.fetch.subphase.highlight.HighlightBuilder;
 import org.elasticsearch.search.fetch.subphase.highlight.HighlightField;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 import acres.dto.BuildingInfo;
@@ -35,7 +34,7 @@ public class BuildingSearchServiceImpl {
 	@Autowired	RestHighLevelClient client;
 	@Autowired	BuildingRepository buildRepo;
 	
-	public List<BuildingInfo> getBuildings(@RequestParam("keyword") String keyword, HttpServletRequest request) throws IOException{
+	public List<BuildingInfo> getBuildingsBySearch(String keyword, HttpServletRequest request) throws IOException{
 		
 		SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
 		searchSourceBuilder.from(0);
@@ -92,8 +91,34 @@ public class BuildingSearchServiceImpl {
 		
 		return buildingList;
 	}
-
-	private BoolQueryBuilder settingQuery(String keyword, HttpServletRequest request) {
+	
+	public List<BuildingInfo> getBuildingsByPropertyType(String propertyType) throws IOException{
+		SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+		searchSourceBuilder.from(0);
+		searchSourceBuilder.size(8);
+		searchSourceBuilder.query(QueryBuilders.boolQuery().must(QueryBuilders.matchQuery("propertyType", propertyType)));
+		
+		SearchRequest request = new SearchRequest("properties");
+		request.source(searchSourceBuilder);
+		
+		SearchResponse response = client.search(request, RequestOptions.DEFAULT);
+		SearchHits hits = response.getHits();
+		SearchHit[] propertiesHit = hits.getHits();
+		long totalHits = hits.totalHits;
+		System.out.println(totalHits);
+		
+		List<BuildingInfo> buildingList = new ArrayList<>();
+		
+		for(SearchHit hit: propertiesHit) {
+			Optional<BuildingInfo> buildResult = buildRepo.findById(hit.getId());
+			BuildingInfo building = buildResult.get();
+			buildingList.add(building);
+		}
+		
+		return buildingList;
+	}
+	
+ 	private BoolQueryBuilder settingQuery(String keyword, HttpServletRequest request) {
 		String propertyType = request.getParameter("propertyType");
 		String listingType = request.getParameter("listingType");
 		String constructionStatus = request.getParameter("constructionStatus");
@@ -133,19 +158,19 @@ public class BuildingSearchServiceImpl {
 		}
 		if(listingType != null) {
 			QueryBuilder listingMatch = QueryBuilders.termQuery("propertyList", listingType);
-			myQuery.filter(listingMatch);
+			myQuery.should(listingMatch);
 		}
 		if(propertyType != null) {
 			QueryBuilder propertyMatch = QueryBuilders.termQuery("propertyType", propertyType);
-			myQuery.filter(propertyMatch);
+			myQuery.should(propertyMatch);
 		}
 		if(constructionStatus != null) {
 			QueryBuilder availabilityMatch = QueryBuilders.termQuery("availabity", constructionStatus);
-			myQuery.filter(availabilityMatch);
+			myQuery.should(availabilityMatch);
 		}
 		if(state != null) {
 			QueryBuilder stateMatch = QueryBuilders.termQuery("state", state);
-			myQuery.filter(stateMatch);
+			myQuery.should(stateMatch);
 		}
 		
 		QueryBuilder areaRange = QueryBuilders.rangeQuery("plotArea").gte(minArea).lte(maxArea);
@@ -156,16 +181,16 @@ public class BuildingSearchServiceImpl {
 		if(listingType == null) {
 			QueryBuilder budgetRange = QueryBuilders.rangeQuery("expectedPrice").gte(minBudget).lte(maxBudget);
 			QueryBuilder rentRange = QueryBuilders.rangeQuery("expectedRent").gte(minBudget).lte(maxBudget);
-			myQuery.filter(budgetRange);
-			myQuery.filter(rentRange);
+			myQuery.should(budgetRange);
+			myQuery.should(rentRange);
 		}
 		else if (listingType.equals("Sale")) {
 			QueryBuilder budgetRange = QueryBuilders.rangeQuery("expectedPrice").gte(minBudget).lte(maxBudget);
-			myQuery.filter(budgetRange);
+			myQuery.should(budgetRange);
 		}
 		else if(listingType.equals("Rent")) {
 			QueryBuilder budgetRange = QueryBuilders.rangeQuery("expectedRent").gte(minBudget).lte(maxBudget);
-			myQuery.filter(budgetRange);
+			myQuery.should(budgetRange);
 		}
 		return myQuery;
 	}

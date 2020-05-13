@@ -3,21 +3,23 @@ package acres.controller;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 
 import acres.dto.BuildingInfo;
 import acres.service.BuildingCrudServiceImpl;
 
-@RestController
+@Controller
 public class BuildingDetailsCtrl {
 	
 	@Autowired	BuildingCrudServiceImpl buildService;
 	
 	@GetMapping("/properties/{buildingId}")
-	public ModelAndView getBuildingDetails(@RequestParam("buildingId") String buildingId) {
+	@PreAuthorize("permitAll()")
+	public ModelAndView getBuildingDetails(@PathVariable("buildingId") String buildingId) {
 		ModelAndView mv = new ModelAndView();
 		Optional<BuildingInfo> retBuilding = buildService.getBuilding(buildingId);
 		if(!retBuilding.isPresent()) {

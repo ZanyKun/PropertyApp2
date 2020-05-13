@@ -49,6 +49,8 @@ public class BuildingInfo {
 	String address;					//House Number and Street Name	(required)
 	String city;					//								(required)
 	String state;					//								(required)
+	
+	@Field(type = FieldType.Text, analyzer = "autocomplete", searchAnalyzer = "standard")
 	String projectName;				//								(Not required)
 	String description;				//Description for building
 	
@@ -87,6 +89,7 @@ public class BuildingInfo {
 	@JsonSerialize(using = DateSerializer.class) 
 	Date postedDate;
 	
+	@Field(type = FieldType.Keyword)
 	@ElementCollection
 	List<String> imageUrls;
 	

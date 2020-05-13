@@ -94,6 +94,8 @@
                     <input type="radio" name="userType" value="Owner"/><br/>
                     <label for="Dealer">Dealer</label>
                     <input type="radio" name="userType"	value="Dealer"/><br/>
+                    <label for="General User">General User</label><br/>
+                    <input type="radio" name="userType" value="General User"><br/>
 
 
                     </div>

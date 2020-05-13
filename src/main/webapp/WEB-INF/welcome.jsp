@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  	<base href="/">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">    
@@ -238,8 +237,8 @@
             <div class="row">
               <div class="col-md-4">
               	<div class="aa-single-advance-search">
-              		<input type="text" name="keyword" style="font-size:14px" placeholder="Search by Project Name, Location or Keyword" 
-              		title="Keyword required for searching" required/>
+              		<input type="text" id="autoSearch" name="keyword" style="font-size:14px" placeholder="Search by Project Name, Location or Keyword" 
+              		title="Keyword required for searching" required onchange="autocomplete()"/>
               	</div>
               </div>
               <div class="col-md-2">

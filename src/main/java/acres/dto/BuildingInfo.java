@@ -38,9 +38,8 @@ import lombok.NoArgsConstructor;
 @Document(indexName = "properties")
 @Indexed
 public class BuildingInfo {
-	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@org.springframework.data.annotation.Id
+	@Id
 	String buildingId;
 	String propertyList;			//Sell, Rent
 	String propertyType;			//Commercial, Residential

@@ -1,8 +1,6 @@
 package acres.dto;
 
-import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -17,12 +15,6 @@ import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.context.annotation.Scope;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-//import org.springframework.security.core.GrantedAuthority;
-//import org.springframework.security.core.authority.SimpleGrantedAuthority;
-//import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -37,9 +29,8 @@ import lombok.NoArgsConstructor;
 @DynamicUpdate
 @Document(indexName = "users")
 @Scope("session")
-public class UserInfo implements UserDetails{
-	
-	private static final long serialVersionUID = 1L;
+public class UserInfo{
+
 	
 	@javax.persistence.Id
 	@Id
@@ -61,34 +52,4 @@ public class UserInfo implements UserDetails{
 	
 	@OneToMany(mappedBy = "user")
 	List<BuildingInfo> buildingList;	//List of building listings
-
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return userType.stream().map(role-> new SimpleGrantedAuthority(role)).collect(Collectors.toList());
-	}
-
-	@Override
-	public String getPassword() {
-		return password1;
-	}
-
-	@Override
-	public boolean isAccountNonExpired() {
-		return true;
-	}
-
-	@Override
-	public boolean isAccountNonLocked() {
-		return true;
-	}
-
-	@Override
-	public boolean isCredentialsNonExpired() {
-		return true;
-	}
-
-	@Override
-	public boolean isEnabled() {
-		return true;
-	}
 }

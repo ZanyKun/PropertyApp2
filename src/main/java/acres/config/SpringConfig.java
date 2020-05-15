@@ -4,10 +4,8 @@ package acres.config;
 import java.net.UnknownHostException;
 
 import org.elasticsearch.client.RestHighLevelClient;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.elasticsearch.client.ClientConfiguration;
 import org.springframework.data.elasticsearch.client.RestClients;
@@ -29,9 +27,9 @@ import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import acres.filter.RequestFilter;
 
 @Configuration
-@EnableElasticsearchRepositories(basePackages = "acres.elastic")
 @EnableTransactionManagement
 @EntityScan(basePackages = "acres.dto")
+@EnableElasticsearchRepositories(basePackages = "acres.elastic")
 public class SpringConfig implements WebMvcConfigurer{
 	
 	@Override
@@ -53,7 +51,7 @@ public class SpringConfig implements WebMvcConfigurer{
 		registry.addViewController("/welcome").setViewName("welcome");
 		registry.addViewController("/login").setViewName("login");
 		registry.addViewController("/register").setViewName("register");
-		registry.addViewController("/list_properties").setViewName("list_properties");
+		registry.addViewController("/list_properties").setViewName("properties");
 		registry.addViewController("/property_details").setViewName("property_details");
 	}
 	
@@ -77,12 +75,11 @@ public class SpringConfig implements WebMvcConfigurer{
 		return s3client;
 	}
 	
-	
 	@Bean
 	public RestHighLevelClient client() throws UnknownHostException {
 		ClientConfiguration clientConfiguration = ClientConfiguration.builder()
 				.connectedTo("localhost:9230").build();
 		
 		return RestClients.create(clientConfiguration).rest();
-	}	
+	}
 }

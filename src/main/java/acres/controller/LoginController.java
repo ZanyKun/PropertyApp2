@@ -5,7 +5,6 @@ import java.util.Optional;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +24,7 @@ public class LoginController {
 	@Autowired	UserAuthService userAuth;
 	
 	@PostMapping("/authenticate.test")
-	@PreAuthorize("permitAll()")
+//	@PreAuthorize("permitAll()")
 	public ModelAndView confirmUser(@ModelAttribute UserInfo currentUser, BindingResult result, HttpSession session) throws UsernameNotFoundException {
 		ModelAndView mv = new ModelAndView();
 		
@@ -68,7 +67,7 @@ public class LoginController {
 	
 	
 	@GetMapping("/login.test")
-	@PreAuthorize("permitAll()")
+//	@PreAuthorize("permitAll()")
 	public ModelAndView getLoginPage() {
 		return new ModelAndView("login");
 	}
